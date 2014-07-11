@@ -1,0 +1,27 @@
+
+.widget[id*=_column_divider-] {
+  background:none;
+  border: 0 !important;
+}
+.widget[id*=_column_divider-] .widget-top {
+  height: 15px;
+  border-radius: 3px;
+  background: #666666 !important;
+}
+.widget[id*=_column_divider-] .widget-top {
+  border: 0 !important;
+  box-shadow: none;
+}
+.widget[id*=_column_divider-] .widget-top:hover {
+  box-shadow: none !important;
+}
+.widget[id*=_column_divider-] .widget-top h4,
+.widget[id*=_column_divider-] .widget-top .widget-title-action,
+.widget[id*=_column_divider-] .widget-inside {
+  display: none !important;
+}
+.widget[id*=_column_divider-] .widget-title {
+  height: 15px;
+  width: 100%;
+  padding: 0;
+}

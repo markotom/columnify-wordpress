@@ -14,6 +14,7 @@ function register_widgets() {
 }
 
 add_action( 'widgets_init', 'register_widgets' );
+add_action('admin_head-widgets.php', array( 'Column_Divider_Widget', 'headers' ), -1000 );
 
 /**
  * Column Divider
@@ -38,6 +39,15 @@ class Column_Divider_Widget extends WP_Widget {
   }
 
   public function update( $new_instance, $old_instance ) {}
+
+  static function headers() {
+    if ( is_admin () ) {
+      $plugin_url = plugin_dir_url( __FILE__ );
+
+      wp_register_style( 'divider_widget', $plugin_url . '/css/divider_widget.css' );
+      wp_enqueue_style( 'divider_widget' );
+    }
+  }
 
 }
 
