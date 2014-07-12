@@ -16,8 +16,11 @@ function get_dividers_by_sidebar( $sidebar ) {
 };
 
 function get_column_class( $sidebar, $grid = 12 ) {
-  $columns = count( get_dividers_by_sidebar( $sidebar ) ) + 1;
-  return 'col-sm-' . ( $grid / $columns );
+  $dividers = count( get_dividers_by_sidebar( $sidebar ) );
+  if ( $dividers ) {
+    $columns = $dividers + 1;
+    return 'col-sm-' . ( $grid / $columns );
+  }
 }
 
 function widget_params( $params ) {
@@ -33,11 +36,16 @@ add_filter( 'dynamic_sidebar_params', 'widget_params' );
 
 add_action( 'dynamic_sidebar_before', function ($sidebar) {
   $class = get_column_class( $sidebar );
-  echo '<div class="' . $class . '">';
+  if ( $class ) {
+    echo '<div class="' . $class . '">';
+  }
 });
 
-add_action( 'dynamic_sidebar_after', function () {
-  echo '</div>';
+add_action( 'dynamic_sidebar_after', function ($sidebar) {
+  $class = get_column_class( $sidebar );
+  if ( $class ) {
+    echo '</div>';
+  }
 });
 
 function register_widgets() {
