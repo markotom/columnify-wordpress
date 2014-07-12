@@ -22,7 +22,7 @@ Did you ever wanted to create columns and rows in your horizontal sidebars? Then
 
 == Frequently Asked Questions ==
 
-= Do I need to install Bootstrap 3 =
+= Do I need to install Bootstrap 3? =
 
 For now, it is necessary that is previously installed.
 
