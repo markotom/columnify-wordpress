@@ -19,7 +19,7 @@ function get_column_class( $sidebar, $grid = 12 ) {
   $dividers = count( get_dividers_by_sidebar( $sidebar ) );
   if ( $dividers ) {
     $columns = $dividers + 1;
-    return 'col-sm-' . ( $grid / $columns );
+    return 'col-sm-' . floor( ( $grid / $columns ) );
   }
 }
 
