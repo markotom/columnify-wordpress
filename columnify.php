@@ -8,6 +8,38 @@ Author URI: https://github.com/markotom
 Version: 0.0.0
 */
 
+function get_dividers_by_sidebar( $sidebar ) {
+  $sidebars = wp_get_sidebars_widgets();
+  if ( isset( $sidebars[ $sidebar ] ) ) {
+    return preg_grep( '/column_divider/', $sidebars[ $sidebar ] );
+  }
+};
+
+function get_column_class( $sidebar, $grid = 12 ) {
+  $columns = count( get_dividers_by_sidebar( $sidebar ) ) + 1;
+  return 'col-sm-' . ( $grid / $columns );
+}
+
+function widget_params( $params ) {
+  if ( $params[0][ 'widget_name' ] === 'Column Divider' ) {
+    $class = get_column_class( $params[ 0 ][ 'id' ] );
+    echo '</div><div class="' . $class . '">';
+  }
+
+  return $params;
+}
+
+add_filter( 'dynamic_sidebar_params', 'widget_params' );
+
+add_action( 'dynamic_sidebar_before', function ($sidebar) {
+  $class = get_column_class( $sidebar );
+  echo '<div class="' . $class . '">';
+});
+
+add_action( 'dynamic_sidebar_after', function () {
+  echo '</div>';
+});
+
 function register_widgets() {
   // Register Column_Divider_Widget
   register_widget( 'Column_Divider_Widget' );
@@ -38,8 +70,6 @@ class Column_Divider_Widget extends WP_Widget {
     // no form
   }
 
-  public function update( $new_instance, $old_instance ) {}
-
   static function headers() {
     if ( is_admin () ) {
       $plugin_url = plugin_dir_url( __FILE__ );
@@ -50,5 +80,7 @@ class Column_Divider_Widget extends WP_Widget {
   }
 
 }
+
+
 
 ?>
