@@ -1,6 +1,6 @@
 {
   "name": "columnify-wordpress",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Creates columns with widgets quickly and painless",
   "main": "Gruntfile.js",
   "repository": {
