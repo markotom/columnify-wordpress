@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     release: {
-      npm: false
+      npm: false,
       push: false,
       commit: false,
       pushTags: false,
