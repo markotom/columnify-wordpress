@@ -54,7 +54,7 @@ function register_widgets() {
 }
 
 add_action( 'widgets_init', 'register_widgets' );
-add_action('admin_head-widgets.php', array( 'Column_Divider_Widget', 'headers' ), -1000 );
+add_action( 'widgets_admin_page', array( 'Column_Divider_Widget', 'headers' ), -1000 );
 
 /**
  * Column Divider
