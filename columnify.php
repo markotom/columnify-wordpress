@@ -31,13 +31,13 @@ class Column_Renderer {
     add_filter( 'sidebars_widgets', array( &$this, 'get_sidebars_widgets' ) );
 
     // Create first column
-    add_action( 'dynamic_sidebar_before', array( &$this, 'dynamic_sidebar_before' ) );
+    add_action( 'dynamic_sidebar_before', array( &$this, 'create_first_column' ) );
 
     // Create break column by column classes
     add_filter( 'dynamic_sidebar_params', array( &$this, 'create_break_column' ) );
 
-    // Close last column div
-    add_action( 'dynamic_sidebar_after', array( &$this, 'dynamic_sidebar_after' ) );
+    // Create last column (close column div)
+    add_action( 'dynamic_sidebar_after', array( &$this, 'create_last_column' ) );
   }
 
   public function get_sidebars_widgets( $sidebars_widgets ) {
@@ -80,7 +80,7 @@ class Column_Renderer {
     return $params;
   }
 
-  public function dynamic_sidebar_before( $sidebar ) {
+  public function create_first_column( $sidebar ) {
     $classes = $this->get_column_classes( $sidebar );
 
     if ( $classes ) {
@@ -88,7 +88,7 @@ class Column_Renderer {
     }
   }
 
-  public function dynamic_sidebar_after( $sidebar ) {
+  public function create_last_column( $sidebar ) {
     $classes = $this->sidebars[ $sidebar ][ 'column_classes' ];
 
     if ( $classes ) {
