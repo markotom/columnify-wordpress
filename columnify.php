@@ -4,9 +4,9 @@
  * @version 0.0.1
  */
 /*
-Plugin Name: Columnify Wordpress
+Plugin Name: Columnify
 Plugin URI: https://github.com/markotom/columnify-wordpress
-Description: Creates columns with widgets quickly and painless
+Description: Creates columns with widgets quickly and painless.
 Author: Marco Godínez <markotom@gmail.com>
 Author URI: https://github.com/markotom
 Version: 0.0.1
